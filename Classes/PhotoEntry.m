@@ -26,8 +26,12 @@
 			[scale setSizeFittingFrame:BMPointMake(640, 480)];
 			anImage = [[UIImage alloc] initWithCGImage:[scale CGImage]];
 #if !__has_feature(objc_arc)
+            
+            image = anImage;
 			[scale release];
 			[bitmap release];
+#else
+            image = [anImage retain];
 #endif
 		} else {
 #if __has_feature(objc_arc)
